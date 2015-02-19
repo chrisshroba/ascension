@@ -51,7 +51,7 @@ def killall_route():
 def run(cmd):
     global p
     killall()
-    p = subprocess.Popen("exec python2" + cmd, stdout=subprocess.PIPE, shell=True)
+    p = subprocess.Popen("exec python2 " + cmd, stdout=subprocess.PIPE, shell=True)
 
 def killall():
     global p
