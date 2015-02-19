@@ -10,6 +10,10 @@ p = None
 
 script_dir = config.get("script_dir")
 
+blacklist_files = ["__init__.py",
+                   "stairs.py",
+                   "stairs.pyc"]
+
 app = Flask(__name__,
             static_folder="../../web/",
             static_path=""
@@ -27,6 +31,8 @@ def maestro():
 
 
     files = os.listdir(script_dir)
+
+    files = [file for file in files if file not in blacklist_files and "pyc" not in file]
 
     for file in files:
         obj["script_list"].append(
