@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/chooser.css" rel="stylesheet">
+
+
+
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+      <![endif]-->
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  </head>
+  <body>
+    <div class="page-header">
+        <h1>
+            <img src="img/logo.jpg" class="img-rounded" width="90">
+            Choose script to run <small>and please don't abuse the system.</small>
+        </h1>
+        <button type="button" id="kill-btn" class="btn btn-danger">Kill Current</button>
+
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <td>
+                        Author
+                    </td>
+                    <td>
+                        Pattern
+                    </td>
+                    <td>
+                        Run
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for script in script_list %}
+                <tr>
+                    <td>
+                        {{ script.author }}
+                    </td>
+                    <td>
+                        {{ script.pattern }}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-default run-button" data-filename="{{script.filename}}">Run</button>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+
+
+        </table>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/maestro.js"></script>
+  </body>
+</html>
