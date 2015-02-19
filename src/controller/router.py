@@ -32,7 +32,7 @@ def maestro():
 
     files = os.listdir(script_dir)
 
-    files = [file for file in files if file not in blacklist_files and "pyc" not in file]
+    files = [file for file in files if file not in blacklist_files and "pyc" not in file and "swp" not in file]
 
     for file in files:
         obj["script_list"].append(
