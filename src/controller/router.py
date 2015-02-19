@@ -4,9 +4,11 @@ from flask import *
 import subprocess
 import os
 
+from config import config
+
 p = None
 
-script_dir="/Users/chrisshroba/testscripts/"
+script_dir = config.get("script_dir")
 
 app = Flask(__name__,
             static_folder="../../web/",
