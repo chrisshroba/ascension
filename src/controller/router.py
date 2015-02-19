@@ -30,18 +30,30 @@ def maestro():
     }
 
 
-    files = os.listdir(script_dir)
+    filenames = os.listdir(script_dir)
 
-    files = [file for file in files if file not in blacklist_files and "pyc" not in file and "swp" not in file]
-    files.sort()
-    for file in files:
+    filenames = [filename for filename in filenames if filename not in blacklist_files and "pyc" not in filename and "swp" not in filename]
+    filenames.sort()
+    for filename in filenames:
         obj["script_list"].append(
             {
                 "author": "Default",
-                "pattern": file,
-                "filename": file
+                "pattern": filename,
+                "filename": filename
             }
         )
+    for item in obj["script_list"]:
+        item_path = os.path.join(script_dir, item["filename"])
+        file = open(item_path)
+        name_line = file.readline().strip()
+        pattern_line = file.readline().strip()
+        if name_line[0] == "#" and pattern_line[0] == "#":
+            name = name_line[2:]
+            pattern = pattern_line[2:]
+            item["author"] = name
+            item["pattern"] = pattern
+
+
     return render_template("maestro.html", **obj)
 
 @app.route("/api/run_file/<filename>")
