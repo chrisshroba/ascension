@@ -60,4 +60,4 @@ def killall():
     except:
         pass
 
-app.run(debug=True, port=4445)
+app.run(debug=True, port=4445, host="0.0.0.0")
