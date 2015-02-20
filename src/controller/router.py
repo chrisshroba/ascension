@@ -43,16 +43,18 @@ def maestro():
             }
         )
     for item in obj["script_list"]:
-        item_path = os.path.join(script_dir, item["filename"])
-        file = open(item_path)
-        name_line = file.readline().strip()
-        pattern_line = file.readline().strip()
-        if name_line[0] == "#" and pattern_line[0] == "#":
-            name = name_line[2:]
-            pattern = pattern_line[2:]
-            item["author"] = name
-            item["pattern"] = pattern
-
+        try:
+            item_path = os.path.join(script_dir, item["filename"])
+            file = open(item_path)
+            name_line = file.readline().strip()
+            pattern_line = file.readline().strip()
+            if name_line[0] == "#" and pattern_line[0] == "#":
+                name = name_line[2:]
+                pattern = pattern_line[2:]
+                item["author"] = name
+                item["pattern"] = pattern
+        except:
+            pass
 
     return render_template("maestro.html", **obj)
 
