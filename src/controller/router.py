@@ -32,7 +32,8 @@ def maestro():
 
     filenames = os.listdir(script_dir)
 
-    filenames = [filename for filename in filenames if filename not in blacklist_files and "pyc" not in filename and "swp" not in filename]
+    filenames = [filename for filename in filenames
+                 if filename not in blacklist_files and "py" in filename]
     filenames.sort()
     for filename in filenames:
         obj["script_list"].append(
